@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Past Races</title>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen p-8">
+    <!-- Container for the content -->
+    <div class="container max-w-3xl mx-auto bg-gray-800 rounded-2xl shadow-lg p-8">
+        <!-- Header Section -->
+        <h1 class="text-4xl font-bold text-center mb-10 text-purple-400">Recent Races</h1>
+
+        <!-- Races List Section -->
+        <section>
+            <ul class="space-y-6">
+                <% pastRaces.forEach(e => { %>
+                    <li class="bg-gray-700 hover:bg-gray-600 p-6 rounded-lg shadow-md transition duration-300">
+                        <!-- Race Information -->
+                        <div class="flex justify-between items-center">
+
+                            <div class="flex flex-col space-y-3">
+                                <p class="text-lg font-semibold text-purple-300">
+                                    Date: <span class="text-gray-100"><%= e.date %></span>
+                                </p>
+                                <p class="text-lg font-medium text-gray-100">
+                                    Name: <span class="text-purple-400"><%= e.name %></span>
+                                </p>
+                                <p class="text-lg font-medium text-gray-100">
+                                    Event: <span class="text-purple-400"><%= e.event %></span>
+                                </p>
+                                <p class="text-lg font-medium text-gray-100">
+                                    Finishing Time: <span class="text-purple-400"><%= e.time %></span>
+                                </p>
+                            </div>
+                            <div>
+    
+                                <!-- Trash -->
+                                <i id="<%= e._id %>" class="fa-solid fa-trash text-red-400 cursor-pointer hover:text-red-600"></i>
+    
+                            </div>
+
+                        </div>
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+
+        <!-- Back Link -->
+        <div class="mt-10 text-center">
+            <a href="/" class="inline-block py-3 px-5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-md transition duration-300">
+                &larr; Back
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const trash = document.getElementsByClassName('fa-trash');
+
+        Array.from(trash).forEach(e => {
+            e.addEventListener('click', DEL);
+        });
+
+        function DEL(e) {
+            const raceID = e.target.id;
+
+            fetch(`/race/delete/${raceID}`, {
+                method: "DELETE",
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    console.error('Error deleting expense');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

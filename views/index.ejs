@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dashboard</title>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen flex justify-center items-center p-8">
+    <!-- Center content with padding -->
+    <div class="container max-w-3xl mx-auto bg-gray-800 rounded-lg shadow-lg p-8">
+        <!-- Welcome Message -->
+        <h1 class="text-4xl font-bold text-center mb-12 text-blue-400">Welcome back, <%= name %>!</h1>
+
+        <!-- Dashboard Sections -->
+        <div class="grid gap-8">
+            <!-- Total Miles Section (Main Button) -->
+            <section class="w-full">
+                <button class="w-full py-4 bg-blue-500 hover:bg-blue-600 text-lg font-semibold text-white rounded-lg shadow-md focus:outline-none focus:ring-4 focus:ring-blue-400">
+                    Total Miles: <%= totalDistance %>
+                </button>
+            </section>
+
+            <!-- Add Workout Button -->
+            <section class="w-full">
+                <a href="links/add" class="block w-full py-4 bg-gray-700 hover:bg-gray-600 text-lg font-medium text-blue-400 rounded-lg text-center shadow-md transition duration-300">
+                    Add Workout
+                </a>
+            </section>
+
+            <!-- View Workouts Button -->
+            <section class="w-full">
+                <a href="links/viewWorkout" class="block w-full py-4 bg-gray-700 hover:bg-gray-600 text-lg font-medium text-blue-400 rounded-lg text-center shadow-md transition duration-300">
+                    View Workouts
+                </a>
+            </section>
+
+            <!-- Past Races Button -->
+            <section class="w-full">
+                <a href="links/pastRaces" class="block w-full py-4 bg-gray-700 hover:bg-gray-600 text-lg font-medium text-blue-400 rounded-lg text-center shadow-md transition duration-300">
+                    Past Races
+                </a>
+            </section>
+
+            <!-- Add Race Button -->
+            <section class="w-full">
+                <a href="links/addRace" class="block w-full py-4 bg-gray-700 hover:bg-gray-600 text-lg font-medium text-blue-400 rounded-lg text-center shadow-md transition duration-300">
+                    Add Race
+                </a>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

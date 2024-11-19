@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
+<body class="bg-purple-900 h-screen flex justify-center items-center">
+
+    <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-sm w-full"> 
+        <h1 class="text-3xl font-semibold text-center mb-6 text-gray-100">Sign In</h1> 
+        
+        <% if (messages.error) { %>
+            <div class="text-red-400 text-center mb-4">
+                <%= messages.error %>
+            </div>
+        <% } %>
+
+        <form action="/login" method="POST">
+            <div class="mb-5">
+                <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+                <input type="email" id="email" name="email" required 
+                    class="mt-2 block w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:bg-gray-600 text-gray-200 transition">
+            </div>
+
+            <div class="mb-6">
+                <label for="password" class="block text-sm font-medium text-gray-300">Password</label> 
+                <input type="password" id="password" name="password" required 
+                    class="mt-2 block w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:bg-gray-600 text-gray-200 transition">
+            </div>
+
+            <button type="submit" class="w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-500 transition duration-200">
+                Sign In
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <a href="/register" class="text-gray-400 hover:text-gray-200 text-sm">Don't have an Account? Create one</a>
+        </div>
+    </div>
+
+</body>
+</html>

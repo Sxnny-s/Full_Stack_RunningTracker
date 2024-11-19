@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Add Workout</title>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-6">
+    <!-- Centered container -->
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg w-full">
+        <h1 class="text-3xl font-bold text-center mb-8 text-purple-400">Add Workout</h1>
+
+        <!-- Workout Form -->
+        <form action="/add" method="post" class="space-y-6">
+            <!-- Distance Input -->
+            <div>
+                <label for="distance" class="block text-sm font-medium text-gray-300 mb-2">Miles</label>
+                <input id="distance" type="number" name="distance" placeholder="Enter Distance"
+                    class="w-full px-4 py-3 rounded-md bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+            </div>
+
+            <!-- Pace Input -->
+            <div>
+                <label for="pace" class="block text-sm font-medium text-gray-300 mb-2">Pace</label>
+                <input id="pace" type="number" name="pace" placeholder="pace/mi"
+                    class="w-full px-4 py-3 rounded-md bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full py-3 bg-purple-500 hover:bg-purple-600 text-lg font-semibold rounded-md text-white shadow-md focus:outline-none focus:ring-4 focus:ring-purple-400">
+                Submit Workout
+            </button>
+        </form>
+
+        <!-- Back Link -->
+        <div class="mt-6 text-center">
+            <a href="/" class="text-purple-400 hover:text-purple-600 text-sm">&lt; Back</a>
+        </div>
+    </div>
+</body>
+
+</html>

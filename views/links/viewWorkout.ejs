@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>View Workouts</title>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen p-8">
+    <!-- Container for the content -->
+    <div class="container max-w-3xl mx-auto bg-gray-800 rounded-2xl shadow-lg p-8">
+        <!-- Workout List Section -->
+        <section>
+            <h1 class="text-4xl font-bold text-center mb-10 text-purple-400">Your Recent Workouts</h1>
+            <ul class="space-y-6">
+                <% recentWorkouts.forEach(e => { %>
+                    <li class="bg-gray-700 hover:bg-gray-600 p-6 rounded-lg shadow-md transition duration-300">
+                        <div class="flex justify-between items-center">
+                            <!-- Date Section -->
+                            <p class="text-lg font-semibold text-purple-300">
+                                <%= e.date.toLocaleDateString() %>
+                            </p>
+                            
+                                <i id="<%= e._id %> " class="fa-solid fa-trash text-red-400 cursor-pointer hover:text-red-600"></i>
+                        </div>
+                        <!-- Distance & Pace Section -->
+                        <div class="mt-3">
+                            <p class="text-xl font-medium text-gray-100">
+                                Distance: <span class="text-purple-400"><%= e.distance %> Miles</span>
+                            </p>
+                            <p class="text-xl font-medium text-gray-100">
+                                Pace: <span class="text-purple-400"><%= e.pace %>/mi</span>
+                            </p>
+                        </div>
+                        
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+        <!-- Back Link -->
+        <div class="mt-10 text-center">
+            <a href="/" class="inline-block py-3 px-5 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg shadow-md transition duration-300">
+                &larr; Back
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        const trash = document.getElementsByClassName('fa-trash');
+
+        Array.from(trash).forEach(e => {
+            e.addEventListener('click', DEL);
+        });
+
+        function DEL(e) {
+            const workoutID = e.target.id;
+
+            fetch(`/workout/delete/${workoutID}`, {
+                method: "DELETE",
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    console.error('Error deleting expense');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+
+
+</body>
+
+</html>
