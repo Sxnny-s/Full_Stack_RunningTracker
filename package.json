@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devStart": "node --watch server.js"
+    "devStart": "node --watch server.js",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
