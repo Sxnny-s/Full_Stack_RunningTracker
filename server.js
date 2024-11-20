@@ -332,6 +332,17 @@ app.delete('/workout/delete/:id', checkAuth, async (req, res) => {
 })
 
 
+app.post('/logout', (req, res) => {
+    
+    // destroy the session 
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).send('Logout failed! please try again...')
+        }
+    })
+
+    res.redirect('/login')
+})
 
 
 
