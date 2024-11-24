@@ -24,6 +24,11 @@ A web-based application to track workouts and races. This app allows users to se
 
 Check out the live version of the app here: [APP](https://fullstack-run-production.up.railway.app/)
 
+## SCREENSHOTS
+
+<img width="1487" alt="image" src="https://github.com/user-attachments/assets/cd6bdeba-40fc-4951-8ca8-bc2f542a3aba">
+
+
 ## Installation
 
 ### Prerequisites
